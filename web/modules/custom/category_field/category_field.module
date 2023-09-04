@@ -1,0 +1,27 @@
+<?php 
+
+/**
+* Implements hook_form_alter().
+*/
+function category_field_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // \Drupal::messenger()->addMessage(t("Form id of this form is @id:",['@id' => $form_id]));
+  if ($form_id === 'user_register_form') {
+    $form['#validate'][] = 'category_head_validation';
+  }
+}
+
+/**
+ * Custom validation function for the user registration form.
+ */
+function category_head_validation($form, &$form_state) {
+  $category_head_value = $form_state->getValue('field_category_head');
+  $query = \Drupal::entityQuery('user')
+    ->condition('field_category_head', $category_head_value)
+    ->accessCheck(TRUE)
+    ->range(0, 1); 
+  $existing_users = $query->execute();
+  // If there are existing users with the same "category head" value, display an error message.
+  if (!empty($existing_users)) {
+    $form_state->setErrorByName('field_category_head', t("This category head is already taken, select any other category from the list."));
+  }
+}

@@ -1,0 +1,75 @@
+<?php 
+
+use Drupal\node\NodeInterface;
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_entity_update().
+ */
+function news_mailer_entity_update(Drupal\Core\Entity\EntityInterface $entity) {
+  // Checking for 'news' type entity.
+  if ($entity->getEntityTypeId() === 'node' && $entity->getType() === 'news') {
+    $author = $entity->getOwner();
+    // Getting the value of the editor_in_charge field to get the editor's id.
+    foreach ($author->get('field_editor_in_charge')->getValue() as $val) {
+      foreach ($val as $id) {
+        $uid = $id;
+      }
+    }
+    // Fetching the email value using the id.
+    $user = User::load($uid);
+    $user_email = $user->get('mail')->value;
+    // Using mail manager service to send mail.
+    $mailManager = \Drupal::service('plugin.manager.mail');
+    $module = 'news_mailer';
+    $key = 'mail';
+    $to = $user_email;
+    $params['message'] = 'News has been updated';
+    $params['title'] = "News content updated";
+    $langcode = 'en';
+    $send = TRUE;
+    $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function news_mailer_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
+  // Checking for 'news' type entity.
+  if ($entity->getEntityTypeId() === 'node' && $entity->getType() === 'news') {
+    $author = $entity->getOwner();
+    // Getting the value of the editor_in_charge field to get the editor's id.
+    foreach ($author->get('field_editor_in_charge')->getValue() as $val) {
+      foreach ($val as $id) {
+        $uid = $id;
+      }
+    }
+    // Fetching the email value using the id.
+    $user = User::load($uid);
+    $user_email = $user->get('mail')->value;
+    // Using mail manager service to send mail.
+    $mailManager = \Drupal::service('plugin.manager.mail');
+    $module = 'news_mailer';
+    $key = 'mail';
+    $to = $user_email;
+    $params['message'] = 'New news have been created';
+    $params['title'] = "News creation";
+    $langcode = 'en';
+    $send = TRUE;
+    $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+  }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function news_mailer_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'mail':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = t('@title', array('@title' => $params['title']));
+      $message['body'][] = $params['message'];
+      break;
+  }
+}

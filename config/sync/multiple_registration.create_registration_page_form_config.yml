@@ -1,0 +1,15 @@
+roles:
+  news_anchor:
+    path: /user/register/anchor
+    url: /user/register/news_anchor
+    redirect_path: ''
+    hidden: 0
+    form_mode_register: register
+    form_mode_edit: default
+  editor:
+    path: /user/register/editor
+    url: /user/register/editor
+    redirect_path: ''
+    hidden: 0
+    form_mode_register: register
+    form_mode_edit: default

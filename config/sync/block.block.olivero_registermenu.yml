@@ -1,0 +1,33 @@
+uuid: 327dfc36-ef31-4937-9f35-97ba19012c34
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.register-menu
+  module:
+    - system
+    - user
+  theme:
+    - olivero
+id: olivero_registermenu
+theme: olivero
+region: primary_menu
+weight: -5
+provider: null
+plugin: 'system_menu_block:register-menu'
+settings:
+  id: 'system_menu_block:register-menu'
+  label: 'Register menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      anonymous: anonymous

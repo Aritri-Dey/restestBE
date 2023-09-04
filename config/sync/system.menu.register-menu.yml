@@ -1,0 +1,8 @@
+uuid: d8a66d2f-03ad-4880-8ef2-a07d1c0244a8
+langcode: en
+status: true
+dependencies: {  }
+id: register-menu
+label: 'Register menu'
+description: ''
+locked: false

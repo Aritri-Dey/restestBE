@@ -1,0 +1,24 @@
+uuid: fd1e07c5-5b0f-4bb7-9004-bed0ef4ddaa5
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.new_section_new
+  module:
+    - views
+  theme:
+    - olivero
+id: olivero_views_block__new_section_new_block_1_2
+theme: olivero
+region: sidebar
+weight: 0
+provider: null
+plugin: 'views_block:new_section_new-block_1'
+settings:
+  id: 'views_block:new_section_new-block_1'
+  label: 'News Section '
+  label_display: visible
+  provider: views
+  views_label: 'News Section '
+  items_per_page: none
+visibility: {  }
