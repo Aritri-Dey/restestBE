@@ -4,7 +4,6 @@
 * Implements hook_form_alter().
 */
 function category_field_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-  // \Drupal::messenger()->addMessage(t("Form id of this form is @id:",['@id' => $form_id]));
   if ($form_id === 'user_register_form') {
     $form['#validate'][] = 'category_head_validation';
   }
@@ -15,6 +14,11 @@ function category_field_form_alter(&$form, \Drupal\Core\Form\FormStateInterface 
  */
 function category_head_validation($form, &$form_state) {
   $category_head_value = $form_state->getValue('field_category_head');
+  $tid = $category_head_value[0]['target_id'];
+  // Fetching te user who owns the category.
+  $user = \Drupal::entityTypeManager()->getStorage('user')->load($tid);
+  $username = $user->getAccountName();
+  // Checking if category is already taken.
   $query = \Drupal::entityQuery('user')
     ->condition('field_category_head', $category_head_value)
     ->accessCheck(TRUE)
@@ -22,6 +26,7 @@ function category_head_validation($form, &$form_state) {
   $existing_users = $query->execute();
   // If there are existing users with the same "category head" value, display an error message.
   if (!empty($existing_users)) {
-    $form_state->setErrorByName('field_category_head', t("This category head is already taken, select any other category from the list."));
+    $form_state->setErrorByName('field_category_head',  t('This category’s head in charge is @user, either update his category or select any
+    other category from the list', ['@user' => $username]));
   }
 }

@@ -9,6 +9,7 @@ dependencies:
     - contact
     - field_permissions
     - filter
+    - paragraphs_type_permissions
     - search
     - system
 _core:
@@ -25,3 +26,4 @@ permissions:
   - 'search content'
   - 'use text format restricted_html'
   - 'view field_hashtags'
+  - 'view paragraph content leader'

@@ -1,0 +1,6 @@
+name: 'About Us Block'
+type: module
+core_version_requirement: ^9 || ^10
+description: 'Custom module to show a block with latest 3 news from particular anchor on the about us page.'
+package: 'custom'
+configure: about_us_block.settings_form

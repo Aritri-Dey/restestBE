@@ -1,0 +1,24 @@
+uuid: d441cb8d-9c38-4f94-a6f4-57afae61c2d3
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - node
+    - user
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.field_best_anchor_description
+field_name: field_best_anchor_description
+entity_type: node
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

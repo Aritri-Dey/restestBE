@@ -14,21 +14,21 @@ function news_mailer_entity_update(Drupal\Core\Entity\EntityInterface $entity) {
     foreach ($author->get('field_editor_in_charge')->getValue() as $val) {
       foreach ($val as $id) {
         $uid = $id;
+        // Fetching the email value using the id.
+        $user = User::load($uid);
+        $user_email = $user->get('mail')->value;
+        // Using mail manager service to send mail.
+        $mailManager = \Drupal::service('plugin.manager.mail');
+        $module = 'news_mailer';
+        $key = 'mail';
+        $to = $user_email;
+        $params['message'] = 'News has been updated';
+        $params['title'] = "News content updated";
+        $langcode = 'en';
+        $send = TRUE;
+        $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
       }
     }
-    // Fetching the email value using the id.
-    $user = User::load($uid);
-    $user_email = $user->get('mail')->value;
-    // Using mail manager service to send mail.
-    $mailManager = \Drupal::service('plugin.manager.mail');
-    $module = 'news_mailer';
-    $key = 'mail';
-    $to = $user_email;
-    $params['message'] = 'News has been updated';
-    $params['title'] = "News content updated";
-    $langcode = 'en';
-    $send = TRUE;
-    $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
   }
 }
 

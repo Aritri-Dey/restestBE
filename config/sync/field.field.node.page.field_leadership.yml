@@ -1,0 +1,31 @@
+uuid: 8033964d-10c0-401d-b514-ea7ac0373f6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_leadership
+    - node.type.page
+    - paragraphs.paragraphs_type.leader
+  module:
+    - entity_reference_revisions
+id: node.page.field_leadership
+field_name: field_leadership
+entity_type: node
+bundle: page
+label: Leadership
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      leader: leader
+    negate: 0
+    target_bundles_drag_drop:
+      leader:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions

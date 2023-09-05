@@ -3,10 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.page.body
+    - field.field.node.page.field_best_anchor_description
+    - field.field.node.page.field_best_anchor_of_this_week
+    - field.field.node.page.field_leadership
     - node.type.page
   module:
-    - text
+    - entity_reference_revisions
     - user
 _core:
   default_config_hash: M_Y8L5tfmhx7DR143E05YyZSpvgil6VFvqcfBWykalg
@@ -15,14 +17,35 @@ targetEntityType: node
 bundle: page
 mode: default
 content:
-  body:
-    type: text_default
+  field_best_anchor_description:
+    type: entity_reference_entity_view
     label: hidden
-    settings: {  }
+    settings:
+      view_mode: compact
+      link: false
     third_party_settings: {  }
-    weight: 100
+    weight: 2
+    region: content
+  field_best_anchor_of_this_week:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_leadership:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
     region: content
   links:
-    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
     region: content
 hidden: {  }

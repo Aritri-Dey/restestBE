@@ -24,6 +24,7 @@
         "drupal/devel": "^5.0",
         "drupal/field_permissions": "^1.2",
         "drupal/multiple_registration": "^3.2",
+        "drupal/paragraphs": "^1.15",
         "drupal/pathauto": "^1.11",
         "drupal/smtp": "^1.2",
         "drush/drush": "^12.1"

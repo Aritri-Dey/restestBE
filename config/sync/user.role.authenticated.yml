@@ -10,6 +10,7 @@ dependencies:
     - field_permissions
     - file
     - filter
+    - paragraphs_type_permissions
     - search
     - shortcut
     - system
@@ -30,3 +31,4 @@ permissions:
   - 'skip comment approval'
   - 'use text format basic_html'
   - 'view field_hashtags'
+  - 'view paragraph content leader'

@@ -1,0 +1,8 @@
+
+about_us_block.home_page:
+  path: '/home'
+  defaults:
+    _controller: '\Drupal\about_us_block\Controller\HomePageController::homePage'
+    _title: 'Welcome Page to Inno News'
+  requirements:
+    _permission: 'access content'
