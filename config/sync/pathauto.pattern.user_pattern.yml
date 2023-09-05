@@ -7,7 +7,7 @@ dependencies:
 id: user_pattern
 label: 'user pattern'
 type: 'canonical_entities:user'
-pattern: '[user:account-name]'
+pattern: '[user:roles]/[user:account-name]'
 selection_criteria: {  }
 selection_logic: and
 weight: 0
