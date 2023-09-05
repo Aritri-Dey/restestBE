@@ -1,0 +1,25 @@
+uuid: e1fe3c17-a544-4c9c-9f16-373af29ba7cf
+langcode: en
+status: true
+dependencies:
+  module:
+    - custom_news_section
+    - system
+  theme:
+    - olivero
+id: olivero_customnewssectionblock
+theme: olivero
+region: sidebar
+weight: 0
+provider: null
+plugin: custom_news_section_block
+settings:
+  id: custom_news_section_block
+  label: 'News Section'
+  label_display: visible
+  provider: custom_news_section
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/authenticated-newsanchor/*'

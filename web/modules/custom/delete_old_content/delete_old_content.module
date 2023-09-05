@@ -1,0 +1,58 @@
+<?php 
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_cron().
+ */
+function delete_old_content_cron() {
+  // Loading the view which has 'news' nodes older than 6 months.
+  $view = \Drupal\views\Views::getView('delete_old_content_view');
+  if (is_object($view)) {
+    // Executing the view to get a list of entities to delete.
+    $view->execute();
+    $result = $view->result;
+    foreach ($result as $row) {
+      // Loading node by id.
+      $node = Node::load($row->nid);
+      // Storing the title of the nodes to be deletd.
+      $node_titles[] = $node->getTitle();
+      // Deleting each entity.
+      $entity = $row->_entity;
+      $entity->delete();
+    }
+    // Converting array to string to send in mail.
+    $node_titles = implode(', ', $node_titles);
+    // Fetching users with editor role.
+    $query = \Drupal::entityQuery('user')
+    ->condition('roles', 'editor')
+    ->accessCheck(TRUE);
+    $uids = $query->execute();
+    foreach ($uids as $uid) {
+      $user = \Drupal\user\Entity\User::load($uid);
+      // Getting the email of each editor.
+      $email = $user->getEmail();
+      $mailManager = \Drupal::service('plugin.manager.mail');
+      $module = 'delete_old_content';
+      $key = 'mail';
+      $to = $email;
+      $params['title'] = "News Deletion";
+      $params['message'] = $node_titles;
+      $langcode = 'en';
+      $send = TRUE;
+      $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+    }
+  }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function delete_old_content_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'mail':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = t('@title', array('@title' => $params['title']));
+      $message['body'][] = $params['message'];
+      break;
+  }
+}

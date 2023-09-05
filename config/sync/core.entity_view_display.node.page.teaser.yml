@@ -1,0 +1,26 @@
+uuid: 43cdcf24-b684-4cdb-9976-30b964aa4481
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.page.field_best_anchor_description
+    - field.field.node.page.field_best_anchor_of_this_week
+    - field.field.node.page.field_leadership
+    - node.type.page
+  module:
+    - user
+_core:
+  default_config_hash: 8BgdRtLbtQ0F__o0FHSH0Mx5fvXOra9tfT1GmNKbRYw
+id: node.page.teaser
+targetEntityType: node
+bundle: page
+mode: teaser
+content:
+  links:
+    weight: 101
+    region: content
+hidden:
+  field_best_anchor_description: true
+  field_best_anchor_of_this_week: true
+  field_leadership: true

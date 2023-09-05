@@ -1,0 +1,51 @@
+uuid: 1b53c0a2-470b-4eb0-9be3-349696a79cae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.page.field_best_anchor_description
+    - field.field.node.page.field_best_anchor_of_this_week
+    - field.field.node.page.field_leadership
+    - node.type.page
+  module:
+    - entity_reference_revisions
+    - user
+_core:
+  default_config_hash: M_Y8L5tfmhx7DR143E05YyZSpvgil6VFvqcfBWykalg
+id: node.page.default
+targetEntityType: node
+bundle: page
+mode: default
+content:
+  field_best_anchor_description:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: compact
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_best_anchor_of_this_week:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_leadership:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

@@ -1,0 +1,6 @@
+name: 'Delete Old Content Module'
+type: module
+core_version_requirement: ^9 || ^10
+description: 'Custom module to delete news older than 6 months.'
+package: 'custom'
+configure: delete_old_content.settings_form

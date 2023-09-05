@@ -1,0 +1,19 @@
+uuid: 8f717e65-ae93-4174-8d2f-a00723bb0587
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_leader_name
+    - paragraphs.paragraphs_type.leader
+id: paragraph.leader.field_leader_name
+field_name: field_leader_name
+entity_type: paragraph
+bundle: leader
+label: 'Leader Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

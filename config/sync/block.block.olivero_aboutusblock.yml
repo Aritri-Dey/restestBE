@@ -1,0 +1,25 @@
+uuid: bc63a3e9-3603-4521-ac76-17e150f54460
+langcode: en
+status: true
+dependencies:
+  module:
+    - about_us_block
+    - system
+  theme:
+    - olivero
+id: olivero_aboutusblock
+theme: olivero
+region: content
+weight: -8
+provider: null
+plugin: about_us_block
+settings:
+  id: about_us_block
+  label: 'Latest news from anchor of the week'
+  label_display: visible
+  provider: about_us_block
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /about-us

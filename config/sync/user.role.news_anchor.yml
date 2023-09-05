@@ -1,0 +1,22 @@
+uuid: 4f3a51cd-4faf-4988-90da-e7d89d78f7e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.news
+  module:
+    - admin_toolbar_search
+    - node
+id: news_anchor
+label: 'News Anchor'
+weight: 4
+is_admin: null
+permissions:
+  - 'access user profiles'
+  - 'create news content'
+  - 'delete any news content'
+  - 'delete own news content'
+  - 'edit any news content'
+  - 'edit own news content'
+  - 'use admin toolbar search'
+  - 'view own unpublished content'

@@ -1,0 +1,33 @@
+uuid: 988c8b0c-7376-401d-90f5-14a45d31c99f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_created_by
+    - node.type.news
+id: node.news.field_created_by
+field_name: field_created_by
+entity_type: node
+bundle: news
+label: 'Created by'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    filter:
+      type: role
+      role:
+        news_anchor: news_anchor
+        content_editor: '0'
+        administrator: '0'
+    include_anonymous: true
+field_type: entity_reference

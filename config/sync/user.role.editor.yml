@@ -1,0 +1,24 @@
+uuid: 8dd0bc09-ef62-41cc-8069-18c6b52aca62
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.news
+  module:
+    - admin_toolbar_search
+    - field_permissions
+    - node
+id: editor
+label: Editor
+weight: 5
+is_admin: null
+permissions:
+  - 'access user profiles'
+  - 'administer nodes'
+  - 'create field_hashtags'
+  - 'edit any news content'
+  - 'edit field_hashtags'
+  - 'edit own field_hashtags'
+  - 'use admin toolbar search'
+  - 'view field_hashtags'
+  - 'view own field_hashtags'

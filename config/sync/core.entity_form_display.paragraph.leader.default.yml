@@ -1,0 +1,54 @@
+uuid: 860f5345-6a42-4390-8f06-7cc2fb3279f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.leader.field_leader_designation
+    - field.field.paragraph.leader.field_leader_name
+    - field.field.paragraph.leader.field_linkedin
+    - field.field.paragraph.leader.field_profile_image
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.leader
+  module:
+    - image
+    - link
+id: paragraph.leader.default
+targetEntityType: paragraph
+bundle: leader
+mode: default
+content:
+  field_leader_designation:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_leader_name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_linkedin:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_profile_image:
+    type: image_image
+    weight: 3
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

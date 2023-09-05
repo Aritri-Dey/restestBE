@@ -1,0 +1,6 @@
+name: 'Custom News Section Module'
+type: module
+core_version_requirement: ^9 || ^10
+description: "Custom module to show a block on all anchor's profile page."
+package: 'custom'
+configure: custom_news_section.settings_form
